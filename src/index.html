@@ -3,9 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Currency Exchanger</title>
   </head>
   <body>
-    <h1>Test</h1>
+    <div class="container">
+      <h1>Test</h1>
+
+      <div class="container-form">
+        <form class="form" id="form">
+          <label for="currency-current-select">Select your currency</label>
+          <select name="currency" id="currency-current-select">
+            <option value="usd">USD</option>
+            <option value="eur">EUR</option>
+            <option value="gbp">GBP</option>
+            <option value="nok">NOK</option>
+            <option value="sek">SEK</option>
+            <option value="jpy">JPY</option>
+            <option value="krw">KRW</option>
+            <option value="aed">AED</option>
+            <option value="rub">RUB</option>
+          </select>
+
+          <label for="currency-to-select">Select your currency</label>
+          <select name="currency" id="currency-to-select">
+            <option value="">USD</option>
+            <option value="eur">EUR</option>
+            <option value="gbp">GBP</option>
+            <option value="nok">NOK</option>
+            <option value="sek">SEK</option>
+            <option value="jpy">JPY</option>
+            <option value="krw">KRW</option>
+            <option value="aed">AED</option>
+            <option value="rub">RUB</option>
+          </select>
+
+          <button type="submit">See the results</button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

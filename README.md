@@ -1,10 +1,8 @@
-# (Application Name)
+# Currency Exchanger
 
-#### (Brief Description of Application)
+#### A currency exchange application, users can select an amount for the supported currencies and get converted currency responses.
 
-#### By _**Onur Kaymak**_
-
-[Onur Kaymak Portfolio](https://onurkaymak.com)
+#### By [Onur Kaymak](https://onurkaymak.com)
 
 ## Technologies Used
 
@@ -14,27 +12,53 @@
 - Node.js
 - Git
 - NPM
-- JEST
 - ESLint
+- ExchangeRate API
 - VS Code
 
 ## Description
 
+An independent project assignment for [Epicodus](https://onurkaymak.com), project is about Asynchrony and APIs in JavaScript.
+
 ## Setup/Installation Requirements
 
-### You have two option to view this project:
+## IMPORTANT:
 
-## First Option
+### Create an API KEY:
 
-- Clone this project from provided GitHub repository: [Repository Link](https://github.com/onurkaymak/pizza-parlor)
+You will need an API key to view this project, to get a valid API key, follow the instructions below;
+
+-Visit the ExchangeRate-API site. Input your email address and click the "Get Free Key" button, here is the link for [ExchangeRate-API](https://www.exchangerate-api.com/)
+
+- After you successfully created your account, navigate into your account from the navigation bar on the top of the page, click My API keys to navigate.
+
+- You'll be prompted to create an account with your email, first name and a password. Agree to the terms of use and click "Get Started!"
+
+- At this point, you'll be able to access a dashboard that includes your API key as well as your remaining API calls for the month.
+
+- After generating your API key, follow the instructions below to setup the project on your computer, please note that you will need to use the generated API key in setup instructions.
+
+### Clone the project in your computer:
+
+- Clone this project from the provided GitHub repository: [Repository Link](https://github.com/onurkaymak/currency-exchanger).
+
 - Navigate into the project's folder in your terminal.
-- Please note that you need have Node.js and NPM are installed in your local machine to install all the dependencies.
-- Type `npm install` in your terminal to download all the necessary dependencies.
-- Once NPM install all the dependencies, you can type `npm run start` in your terminal to view the project on your browser.
 
-## Second Option
+- While you are in the root level of the project folder, create a file called ".env". This is a file where you need to store your generated API key
 
-You can also view this project live from the provided link: [Live App Link](https://github.com/onurkaymak)
+- .env extension is added in the .gitignore file and Webpack to protect your API key, you don't need to take any extra step for this.
+
+- While you are in the .env file, type "API_KEY=" and store your generated API key without any empty space (EX: API_KEY=YOURGENERATEDAPIKEY).
+
+- Please note that you need both Node.js and NPM are installed in your local machine to install all the dependencies to run this app.
+
+- While you are in the root level of the project folder, type `$ npm install` in your terminal to download all the necessary dependencies.
+
+- Once NPM install all the dependencies, you can type `$ npm run build` in your terminal, this will let Webpack to bundle application files.
+
+- Finally, you can type `$ npm run start`, this will let Webpack to start the application in your browser.
+
+- You can always check package.json file to see full list of dependencies and scripts.
 
 ## Known Bugs
 

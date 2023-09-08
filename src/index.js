@@ -2,11 +2,11 @@ import Exchanger from './js/exchanger';
 import './css/styles.css';
 
 
-export const printResults = (results) => {
-    console.log(results); //// REFLECT THE RESULTS
-
-
-    // document.getElementById("container-results").innerText;
+export const printResults = (results, currencyAmount) => {
+    const text = `
+        ${currencyAmount} ${results.base_code} = ${results.conversion_result} ${results.target_code}, conversion rate is: ${results.conversion_rate}.
+        `;
+    document.getElementById("container-results").innerText = text;
 };
 
 const formHandler = (event) => {
@@ -15,17 +15,19 @@ const formHandler = (event) => {
     let currencyAmount = event.target[1].value;
     let convertToCurrency = event.target[2].value.toUpperCase();
 
-
-    Exchanger.getCurrency(currentCurrency, currencyAmount, convertToCurrency)
-        .then(function (response) {
-            console.log(response);
-            // if (response.result) {
-            //     // Exchanger.defineResults(response.conversion_rates, currentCurrency, convertToCurrency);
-            //     printResults([response.conversion_rates, currentCurrency, convertToCurrency]);
-            // } else {
-            //     console.log('bad');
-            // }
-        });
+    if (currencyAmount === "") {
+        return console.log("amount cannot be zero!");
+    } else {
+        Exchanger.getCurrency(currentCurrency, currencyAmount, convertToCurrency)
+            .then(function (response) {
+                console.log(response);
+                if (response.result) {
+                    printResults(response, currencyAmount);
+                } else {
+                    console.log('bad');
+                }
+            });
+    }
 };
 
 

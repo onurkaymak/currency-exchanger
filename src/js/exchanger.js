@@ -3,8 +3,8 @@ import { printResults } from "../index";
 export default class Exchanger {
     static currencies = ["usd", 'eur', 'gbp', 'nok', 'sek', 'jpy', 'krw', 'aed', 'rub'];
 
-    static getCurrency(currentCurrency = "usd") {
-        return fetch(`https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/latest/${currentCurrency}`)
+    static getCurrency(currentCurrency = "USD", currencyAmount, convertToCurrency) {
+        return fetch(`https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/pair/${currentCurrency}/${convertToCurrency}/5.52`)
             .then(function (response) {
                 if (!response.ok) {
                     const errorStatus = `${response.status}`;

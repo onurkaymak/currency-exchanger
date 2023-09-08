@@ -4,29 +4,28 @@ import './css/styles.css';
 
 export const printResults = (results) => {
     console.log(results); //// REFLECT THE RESULTS
+
+
+    // document.getElementById("container-results").innerText;
 };
 
-const formHandler = async (event) => {
+const formHandler = (event) => {
     event.preventDefault();
-    let currentCurrency = event.target[0].value;
-    let convertToCurrency = event.target[1].value;
-
-    // try {
-    //     const apiResult = await Exchanger.getCurrency(currentCurrency, convertToCurrency);
-    //     Exchanger.defineResults(apiResult, currentCurrency, convertToCurrency);
-    // } catch (error) {
-    //     console.log(error, 'index.js catch');
-    // }
+    let currentCurrency = event.target[0].value.toUpperCase();
+    let currencyAmount = event.target[1].value;
+    let convertToCurrency = event.target[2].value.toUpperCase();
 
 
-
-    const response = await Exchanger.getCurrency(currentCurrency, convertToCurrency);
-    if (response.main) {
-        console.log('print results');
-    } else {
-        console.log('print errors');
-    }
-
+    Exchanger.getCurrency(currentCurrency, currencyAmount, convertToCurrency)
+        .then(function (response) {
+            console.log(response);
+            // if (response.result) {
+            //     // Exchanger.defineResults(response.conversion_rates, currentCurrency, convertToCurrency);
+            //     printResults([response.conversion_rates, currentCurrency, convertToCurrency]);
+            // } else {
+            //     console.log('bad');
+            // }
+        });
 };
 
 

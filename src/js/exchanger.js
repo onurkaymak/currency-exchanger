@@ -1,3 +1,5 @@
+import { printResults } from "../index";
+
 export default class Exchanger {
     static currencies = ["usd", 'eur', 'gbp', 'nok', 'sek', 'jpy', 'krw', 'aed', 'rub'];
 
@@ -12,22 +14,18 @@ export default class Exchanger {
                 }
             })
             .catch(function (error) {
+                console.log('error in fetch catch');
                 return error;
             });
     }
 
-    static defineResults(apiResults) {
-        console.log(apiResults);
-        // if (Exchanger.currencies.includes(currentCurrency) && Exchanger.currencies.includes(convertToCurrency)) {
-        //     console.log("yes");
-        // } else {
-        //     return console.log("no");
-        // }
+    static defineResults(apiResults, currentCurrency, convertToCurrency) {
+        const responseCurrenciesArr = Object.keys(apiResults.conversion_rates);
 
-        if (this.currencies.includes(apiResults.base_code.toLowerCase())) {
-            console.log('yes');
+        if (responseCurrenciesArr.includes(currentCurrency.toUpperCase())) {
+            printResults([responseCurrenciesArr, currentCurrency, convertToCurrency]);
         } else {
-            const errorMessage = "We don't have this currencie"
+            console.log("We don't have this currency!");
         }
     }
 }

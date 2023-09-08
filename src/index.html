@@ -7,8 +7,7 @@
   </head>
   <body>
     <div class="container">
-      <h1>Test</h1>
-
+      <h1>Currency Exchanger</h1>
       <div class="container-form">
         <form class="form" id="form">
           <label for="currency-current-select">Select your currency</label>
@@ -22,8 +21,12 @@
             <option value="krw">KRW</option>
             <option value="aed">AED</option>
             <option value="rub">RUB</option>
+            <option value="sss">Test for unsupported currency</option>
           </select>
-
+          <label for="amount-current">Select the amount</label>
+          <input type="text" id="amount-current" />
+          <br />
+          <br />
           <label for="currency-to-select">Select your currency</label>
           <select name="currency" id="currency-to-select">
             <option value="usd">USD</option>
@@ -36,9 +39,17 @@
             <option value="aed">AED</option>
             <option value="rub">RUB</option>
           </select>
-
+          <br />
+          <br />
           <button type="submit">See the results</button>
         </form>
+
+        <div class="container-results" id="container-results"></div>
+
+        <div class="hidden" id="container-error">
+          <h2 id="error-title">Error Code</h2>
+          <p id="error-message">Error Message</p>
+        </div>
       </div>
     </div>
   </body>

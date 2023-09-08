@@ -1,14 +1,17 @@
-import { printResults } from "../index";
+import { customError } from "./customError";
 
 export default class Exchanger {
     static currencies = ["usd", 'eur', 'gbp', 'nok', 'sek', 'jpy', 'krw', 'aed', 'rub'];
 
     static getCurrency(currentCurrency = "USD", currencyAmount, convertToCurrency) {
-        return fetch(`https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/pair/${currentCurrency}/${convertToCurrency}/5.52`)
-            .then(function (response) {
+        return fetch(`https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/pair/${currentCurrency}/${convertToCurrency}/${currencyAmount}`)
+            .then(async function (response) {
                 if (!response.ok) {
-                    const errorStatus = `${response.status}`;
-                    throw new Error(errorStatus);
+                    const errorCode = response.status;
+                    const errorParsed = await response.json();
+                    const errorType = errorParsed['error-type'];
+
+                    throw new customError(errorCode, errorType); //Defined custom error class that extends from Error class for better error handling.
                 } else {
                     return response.json();
                 }
@@ -16,14 +19,5 @@ export default class Exchanger {
             .catch(function (error) {
                 return error;
             });
-    }
-
-    static defineResults(apiResults, currentCurrency, convertToCurrency) {
-
-        if (this.currencies.includes(currentCurrency.toLowerCase())) {
-            printResults([apiResults, currentCurrency, convertToCurrency]);
-        } else {
-            console.log("We don't have this currency!");
-        }
     }
 }

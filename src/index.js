@@ -1,5 +1,7 @@
 import Exchanger from './js/exchanger';
+import { errorHandler } from './js/errorHandler';
 import './css/styles.css';
+
 
 
 export const printResults = (results, currencyAmount) => {
@@ -15,21 +17,23 @@ const formHandler = (event) => {
     let currencyAmount = event.target[1].value;
     let convertToCurrency = event.target[2].value.toUpperCase();
 
+    document.getElementById('container-error').setAttribute("class", "hidden");
+    document.getElementById('container-results').setAttribute("class", "hidden");
+
     if (currencyAmount === "") {
-        return console.log("amount cannot be zero!");
+        errorHandler({ status: 400, message: 'Please select an amount and try again.' });
     } else {
         Exchanger.getCurrency(currentCurrency, currencyAmount, convertToCurrency)
             .then(function (response) {
-                console.log(response);
                 if (response.result) {
                     printResults(response, currencyAmount);
+                    document.getElementById('container-results').removeAttribute("class", "hidden");
                 } else {
-                    console.log('bad');
+                    errorHandler(response);
                 }
             });
     }
 };
-
 
 window.addEventListener("load", function () {
     const form = document.getElementById("form");

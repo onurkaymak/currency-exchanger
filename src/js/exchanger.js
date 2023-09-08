@@ -7,23 +7,21 @@ export default class Exchanger {
         return fetch(`https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/latest/${currentCurrency}`)
             .then(function (response) {
                 if (!response.ok) {
-                    const errorMessage = `${response.status} ${response.statusText}`;
-                    throw new Error(errorMessage);
+                    const errorStatus = `${response.status}`;
+                    throw new Error(errorStatus);
                 } else {
                     return response.json();
                 }
             })
             .catch(function (error) {
-                console.log('error in fetch catch');
                 return error;
             });
     }
 
     static defineResults(apiResults, currentCurrency, convertToCurrency) {
-        const responseCurrenciesArr = Object.keys(apiResults.conversion_rates);
 
-        if (responseCurrenciesArr.includes(currentCurrency.toUpperCase())) {
-            printResults([responseCurrenciesArr, currentCurrency, convertToCurrency]);
+        if (this.currencies.includes(currentCurrency.toLowerCase())) {
+            printResults([apiResults, currentCurrency, convertToCurrency]);
         } else {
             console.log("We don't have this currency!");
         }

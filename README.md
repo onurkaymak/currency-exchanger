@@ -1,6 +1,6 @@
 # Currency Exchanger
 
-#### A currency exchange application, users can select an amount for the supported currencies and get converted currency responses.
+#### A currency exchange application where users can select an amount for the supported currencies and get converted currency responses.
 
 #### By [Onur Kaymak](https://onurkaymak.com)
 

@@ -3,7 +3,7 @@ import { customError } from "./customError";
 export default class Exchanger {
     static currencies = ["usd", 'eur', 'gbp', 'nok', 'sek', 'jpy', 'krw', 'aed', 'rub'];
 
-    static getCurrency(currentCurrency = "USD", currencyAmount, convertToCurrency) {
+    static getCurrency(currentCurrency, currencyAmount, convertToCurrency) {
         return fetch(`https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/pair/${currentCurrency}/${convertToCurrency}/${currencyAmount}`)
             .then(async function (response) {
                 if (!response.ok) {

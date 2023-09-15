@@ -18,7 +18,7 @@
 
 ## Description
 
-An independent project assignment for [Epicodus](https://onurkaymak.com), project is about Asynchrony and APIs in JavaScript.
+An independent project assignment for [Epicodus](https://www.epicodus.com/), project is about Asynchrony and APIs in JavaScript.
 
 ## Setup/Installation Requirements
 
